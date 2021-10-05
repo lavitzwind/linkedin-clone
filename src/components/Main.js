@@ -106,15 +106,24 @@ const Main = (props) => {
 							<span>Like</span>
 						</button>
 						<button>
-							<img src="" alt="" />
+							<img
+								src="https://static-exp1.licdn.com/sc/h/1z80ze8ler6arc76a8rxsgqbh"
+								alt=""
+							/>
 							<span>Comments</span>
 						</button>
 						<button>
-							<img src="" alt="" />
+							<img
+								src="https://static-exp1.licdn.com/sc/h/39axkb4qe8q95ieljrhqhkxvl"
+								alt=""
+							/>
 							<span>Share</span>
 						</button>
 						<button>
-							<img src="" alt="" />
+							<img
+								src="https://static-exp1.licdn.com/sc/h/3c4dl0u9dy2zjlon6tf5jxlqo"
+								alt=""
+							/>
 							<span>Send</span>
 						</button>
 					</SocialActions>
@@ -306,6 +315,10 @@ const SocialActions = styled.div`
 		align-items: center;
 		padding: 8px;
 		color: #0a66c2;
+		img {
+			height: 20px;
+			width: 20px;
+		}
 	}
 
 	@media (min-width: 768px) {
