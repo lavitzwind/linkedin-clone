@@ -1,9 +1,15 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import PostModal from "./PostModal";
+import { connect } from "react-redux";
+import { getArticlesAPI } from "../actions";
 
 const Main = (props) => {
 	const [showModal, setShowModal] = useState("close");
+
+	useEffect(() => {
+		props.getArticles();
+	});
 
 	const handleClick = (e) => {
 		e.preventDefault();
@@ -27,10 +33,15 @@ const Main = (props) => {
 	return (
 		<Container>
 			<ShareBox>
-				Share
 				<div>
-					<img src="/images/user.svg" alt="" />
-					<button onClick={handleClick}>Start a post</button>
+					{props.user && props.user.photoURL ? (
+						<img src={props.user.photoURL} />
+					) : (
+						<img src="/images/user.svg" />
+					)}
+					<button onClick={handleClick} disabled={props.loading ? true : false}>
+						Start a post
+					</button>
 				</div>
 				<div>
 					<button>
@@ -54,7 +65,9 @@ const Main = (props) => {
 					</button>
 				</div>
 			</ShareBox>
-			<div>
+			<Content>
+				{props.loading && <img src="./images/spin-loader.svg" />}
+
 				<Article>
 					<SharedActor>
 						<a>
@@ -128,7 +141,7 @@ const Main = (props) => {
 						</button>
 					</SocialActions>
 				</Article>
-			</div>
+			</Content>
 			<PostModal showModal={showModal} handleClick={handleClick} />
 		</Container>
 	);
@@ -328,4 +341,23 @@ const SocialActions = styled.div`
 	}
 `;
 
-export default Main;
+const Content = styled.div`
+	text-align: center;
+	& > img {
+		width: 30px;
+	}
+`;
+
+const mapStateToProps = (state) => {
+	return {
+		loading: state.articleState.loading,
+		user: state.userState.user,
+		articles: state.articleState.articles,
+	};
+};
+
+const mapDispatchToProps = (dispatch) => ({
+	getArticles: () => dispatch(getArticlesAPI()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Main);
