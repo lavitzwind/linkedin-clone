@@ -282,6 +282,8 @@ const Editor = styled.div`
 		width: 100%;
 		min-height: 100px;
 		resize: none;
+		border: none;
+		outline: none;
 	}
 
 	input {
@@ -296,6 +298,10 @@ const UploadImage = styled.div`
 	text-align: center;
 	img {
 		width: 100%;
+	}
+	p {
+		padding-top: 10px;
+		font-size: 30px;
 	}
 `;
 
