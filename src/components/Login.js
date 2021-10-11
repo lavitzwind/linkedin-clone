@@ -12,8 +12,8 @@ const Login = (props) => {
 					<img src="/images/login-logo.svg" alt="" />
 				</a>
 				<div>
-					<Join>Join Now</Join>
-					<SignIn> Sign In</SignIn>
+					<Join onClick={() => props.signIn()}>Join Now</Join>
+					<SignIn onClick={() => props.signIn()}> Sign In</SignIn>
 				</div>
 			</Nav>
 			<Section>
@@ -62,6 +62,7 @@ const Join = styled.a`
 	border-radius: 4px;
 	color: rgba(0, 0, 0, 0.6);
 	margin-right: 12px;
+	cursor: pointer;
 	&:hover {
 		background-color: rgba(0, 0, 0, 0.08);
 		color: rgba(0, 0, 0, 0.9);
@@ -80,6 +81,7 @@ const SignIn = styled.a`
 	padding: 10px 24px;
 	text-align: center;
 	background-color: rgba(0, 0, 0, 0);
+	cursor: pointer;
 	&:hover {
 		background-color: rgba(112, 181, 249, 0.15);
 		color: #0a66c2;
@@ -162,6 +164,7 @@ const Google = styled.button`
 	transition-duration: 167ms;
 	font-size: 20px;
 	color: rgba(0, 0, 0, 0.6);
+	cursor: pointer;
 	&:hover {
 		background-color: rgba(207, 207, 207, 0.25);
 		color: rgba(0, 0, 0, 0.75);
